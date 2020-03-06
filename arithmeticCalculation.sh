@@ -40,3 +40,16 @@ done
 echo "descending order:" ${ArrayResult[@]}
 
 
+for((i=1;i<$len;i++))
+do
+     for((j=i+1;j<=$len;j++))
+     do
+        if [[ ${ArrayResult[i]%.*} -gt ${ArrayResult[j]%.*} ]]
+        then
+             temp=${ArrayResult[$i]}
+             ArrayResult[i]=${ArrayResult[$j]}
+             ArrayResult[j]=$temp
+        fi
+     done
+done
+ echo "ascending order:" ${ArrayResult[@]}
