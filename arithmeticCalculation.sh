@@ -13,29 +13,30 @@ result2=`echo "scale=2; $number1*$number2+$number3" | bc`
 result3=`echo "scale=2; $number3+$number1/$number2" | bc`
 result4=$( echo "scale=2; $number1%$number2+$number3 " | bc )
 
-echo "Result of first arithmetic operation is: $result1"
-echo "Result of second arithmetic opeartion is: $result2"
-echo "Result of third arithmetic opeartion is: $result3"
-echo "Result of fourth arithmetic opeartion is: $result4"
-
 DictResult[1]="$result1"
 DictResult[2]="$result2"
 DictResult[3]="$result3"
 DictResult[4]="$result4"
 
-echo "Dictionary values are:${DictResult[@]}"
-echo "Dictionary keys are:${!DictResult[@]}"
-
-for (( i=1;i<=4;i++ ))
+for ((i=0;i<=4;i++))
 do
 	ArrayResult[i]=${DictResult[$i]}
 done
-	echo "Array result is:${ArrayResult[@]}"
+	echo "Array result is:" ${ArrayResult[@]}
 
-
-
-
-
-
+len=${#ArrayResult[@]}
+for((i=1;i<$len;i++))
+do
+    for((j=i+1;j<=$len;j++))
+     do
+       if [[ ${ArrayResult[i]%.*} -lt ${ArrayResult[j]%.*} ]]
+       then
+             temp=${ArrayResult[$i]}
+             ArrayResult[i]=${ArrayResult[$j]}
+            ArrayResult[j]=$temp
+        fi
+    done
+done
+echo "descending order:" ${ArrayResult[@]}
 
 
