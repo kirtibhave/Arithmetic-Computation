@@ -5,5 +5,7 @@ read -p  "enter first number" number1
 read -p  "enter second  number" number2
 read -p  "enter third  number" number3
 
-result=`echo "scale=2; $number1+$number2*$number3" | bc`
-echo "Result is: $result"
+firstOpeartionResult=`echo "scale=2; $number1+$number2*$number3" | bc`
+secondOperationResult=`echo "scale=2; $number1*$number2+$number3" | bc`
+echo "Result of first arithmetic operation is: $firstOpeartionResult"
+echo "Result of second arithmetic opeartion is: $secondOperationResult"
