@@ -8,7 +8,9 @@ read -p  "enter third  number" number3
 firstOpeartionResult=`echo "scale=2; $number1+$number2*$number3" | bc`
 secondOperationResult=`echo "scale=2; $number1*$number2+$number3" | bc`
 thirdOperationResult=`echo "scale=2; $number3+$number1/$number2" | bc`
+fourthOperationResult=`echo "scale=2; $number1%$number2+$number3" | bc`
 
 echo "Result of first arithmetic operation is: $firstOpeartionResult"
 echo "Result of second arithmetic opeartion is: $secondOperationResult"
 echo "Result of third arithmetic opeartion is: $thirdOperationResult"
+echo "Result of fourth arithmetic opeartion is: $fourthOperationResult"
